@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home | CS Blogs {% endblock %}
+
+{% block body %}
+
+<h1 class="mb-4">Latest Posts</h1>
+    {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-12 mb-4">
+                <div class="card border-0 shadow-sm" style="background-color: #161b22; color: #c9d1d9;">
+                <div class="card-body">
+                    <h3 class="card-title">
+                    <a href="{{ url_for('blogViewBP.blog', blog_id=post.id) }}" class="text-decoration-none" style="color: #58a6ff;">
+                        {{ post.title }}
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<label class="card-text"><small style="color: #7f7f80;">{{ post.date_created.strftime('%b %d, %Y - %I:%M %p')}}</small></label>
+                    </h3>
+                    <p class="card-text">
+                    {{ post.content[:250] }}{% if post.content|length > 350 %}...{% endif %}
+                    </p>
+                    <label class="card-text"><small style="color: #7f7f80;">Written By:&nbsp;&nbsp;</small></label><label class="card-text"><small style="color: #ffffff;">{{ post.writer }}</small></label><br/><br/>
+                    <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                </div>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>Oops SORRY!! No blog posts to display</h2>
+    {% endif %}
+{% endblock %}

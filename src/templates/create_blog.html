@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %} Create New Blog | CS Blogs {% endblock %}
+
+{% block body %}
+
+<h2 class="mb-4">Create a New Blog Post</h2>
+
+<form method="POST" class="needs-validation" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control", placeholder="Enter your blog title", size=50) }}
+        {% if form.title.errors %}
+            <div class="text-danger mt-1">
+                {% for error in form.title.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.content.label(class="form-label") }}
+        {{ form.content(class="form-control", rows=10, placeholder="Write your blog content here...") }}
+        {% if form.content.errors %}
+            <div class="text-danger mt-1">
+                {% for error in form.content.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.writer.label(class="form-label") }}
+        {{ form.writer(class="form-control", placeholder="Written By...") }}
+        {% if form.writer.errors %}
+            <div class="text-danger mt-1">
+                {% for error in form.content.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.category.label(class="form-label") }}
+        {{ form.category(class="form-select") }}
+        {% if form.category.errors %}
+            <div class="text-danger mt-1">
+                {% for error in form.category.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+</form>
+
+{% endblock %}

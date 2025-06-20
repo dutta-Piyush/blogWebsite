@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home | CS Blogs {% endblock %}
+
+{% block body %}
+
+    {% if blog %}
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="card border-0 shadow-sm" style="background-color: #161b22; color: #c9d1d9;">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        {{ blog.title }}
+                    </h1>
+                    <p class="card-text"><small style="color: #7f7f80;">{{ blog.date_created.strftime('%b %d, %Y - %I:%M %p')}}</small></p>
+                    <p class="card-text" style="white-space: pre-wrap;">
+                    {{ blog.content }}
+                    </p>
+                    <label class="card-text"><small style="color: #7f7f80;">~&nbsp;&nbsp;</small></label><label class="card-text"><small style="color: #ffffff;">{{ blog.writer }}</small></label><br/><br/>
+                </div>
+                </div>
+                </div>
+        </div>
+    {% else %}
+        <h2>Oops SORRY!! No blog posts to display</h2>
+    {% endif %}
+{% endblock %}

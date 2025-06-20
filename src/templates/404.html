@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}404 Not Found | CS Blogs{% endblock %}
+
+{% block body %}
+<div class="text-center mt-5">
+  <h1 class="display-4 text-danger">404</h1>
+  <p class="lead">Oops! Something went wrong.</p>
+  <p>The page you're looking for doesn't exist or has been moved.</p>
+  <a href="{{ url_for('homeBP.home') }}" class="btn btn-outline-light mt-3">Go Back Home</a>
+</div>
+{% endblock %}
